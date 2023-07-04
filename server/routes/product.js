@@ -66,8 +66,7 @@ router.post("/oneProduct/:id",verifyToken, async (req, res) => {
 //Get all Products
 router.post("/all",verifyToken, async (req, res) => {
   try {
-    
-      let results= await Product.find();
+    let results = await Product.find().sort({ createdAt: 1 });
       return res.status(200).json(results);
     
   } catch (err) {
